@@ -16,10 +16,6 @@ logger.setLevel(logging.DEBUG)
 
 db_connection = psycopg2.connect(
                       DB_URI, sslmode="require"
-                      # host=host,
-                      # user= user,
-                      # password= password,
-                      # database=db_name
                       )
 db_object = db_connection.cursor()
 
@@ -38,7 +34,7 @@ def start(message):
          db_connection.commit()
  #bot.delete_message(message.chat.id, message.message_id)
 
-@server.route (f"/{BOT_TOKEN}",methods=["POST"])
+@server.route (f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message ():
     json_string = request.get_data().decode ("utf-8")
     update = telebot.types.Update.de_json(json_string)
