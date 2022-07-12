@@ -6,11 +6,14 @@ import psycopg2
 from config import *
 from datetime import datetime
 from flask import Flask, request
+
+bot = telebot.TeleBot(BOT_TOKEN) #тестовый бот
+server = Flask(__name__)
 logger=telebot.logger
 logger.setLevel(logging.DEBUG)
-server = Flask(__name__)
+
 #bot = telebot.TeleBot('5594004962:AAE9esiDOQxn2YM8t-2oVakoVeY8SKb3Psk')
-bot = telebot.TeleBot(BOT_TOKEN) #тестовый бот
+
 db_connection = psycopg2.connect(
                       DB_URI, sslmode="require"
                       # host=host,
@@ -156,7 +159,7 @@ def answer(c):
 if __name__ == "__main__":
     bot.remove_webhook()
     bot.set_webhook(url=APP_URL)
-    server.run(host="0.0.0.0", port = int(os.environ.get("PORT",5432)))
+    server.run(host="0.0.0.0", port = int(os.environ.get("PORT",5000)))
 
 
 bot.polling(none_stop=True)
