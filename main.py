@@ -12,11 +12,11 @@ server = Flask(__name__)
 #bot = telebot.TeleBot('5594004962:AAE9esiDOQxn2YM8t-2oVakoVeY8SKb3Psk')
 bot = telebot.TeleBot(BOT_TOKEN) #тестовый бот
 db_connection = psycopg2.connect(
-                    #DB_URI, sslmode="require"
-                      host=host,
-                      user= user,
-                      password= password,
-                      database=db_name
+                      DB_URI, sslmode="require"
+                      # host=host,
+                      # user= user,
+                      # password= password,
+                      # database=db_name
                       )
 db_object = db_connection.cursor()
 
