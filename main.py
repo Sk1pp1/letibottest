@@ -27,8 +27,10 @@ def start(message):
     bot.send_message(message.chat.id, mess , parse_mode='html')
     db_object.execute (f"SELECT iduser FROM users WHERE iduser = {iduser}")
     result= db_object.fetchone()
+    db_object.execute("INSERT INTO users (dt) VALEUES (%s)", (dt))
+    db_connection.commit()
     if not result:
-         db_object.execute("INSERT INTO users (iduser ,f_name,s_name,dt) VAlUES(%s,%s,%s,%s)", (iduser,f_name,s_name,dt))
+         db_object.execute("INSERT INTO users (iduser ,f_name,s_name,dt) VAlUES(%s,%s,%s,%s)", (iduser,f_name,s_name,dt)
          db_connection.commit()
  #bot.delete_message(message.chat.id, message.message_id)
 
